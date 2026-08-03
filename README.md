@@ -1,18 +1,30 @@
-# React + Vite
+# Formel 1 Archiv - Abschlussprojekt
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Projektübersicht
+Dies ist ein Abschlussprojekt zur Erstellung einer Formel-1-Archivwebseite. Die Anwendung soll historische Daten zu Fahrern, Teams und Grand Prix anzeigen sowie ein kurzes Quiz anbieten.
 
-Currently, two official plugins are available:
+## Sprint 1
+- Anforderungen auflisten
+- Grundidee für die Webseite definieren
+- Umsetzung starten
+- Webseite fertigstellen
+- Docker-Anbindung planen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Benötigte Technologien
+- HTTP
+- HTML
+- CSS
+- JavaScript
+- API
+- React
+- Datenbank
+- Docker
+- AWS
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Grundidee
+- Formel-1-Archiv erstellen
+- Geschichten zu Fahrern und Teams darstellen
+- Grand Prix Historie anzeigen
+- Kurzes Quiz integrieren
+- Docker-Container mit Datenbank
+- Optional: AWS-Anbindung

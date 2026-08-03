@@ -5,6 +5,7 @@ import Drivers from './pages/Drivers'
 import Teams from './pages/Teams'
 import Team from './pages/Team'
 import GP from './pages/GP'
+import Quiz from './pages/Quiz'
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Link to="/teams">Teams</Link>
           <span> · </span>
           <Link to="/gp">Grand Prix History</Link>
+          <span> · </span>
+          <Link to="/quiz">Quiz</Link>
         </nav>
       </header>
 
@@ -29,6 +32,7 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/teams/:id" element={<Team />} />
           <Route path="/gp" element={<GP />} />
+          <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </main>
     </div>

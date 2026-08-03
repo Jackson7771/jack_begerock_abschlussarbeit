@@ -246,6 +246,19 @@ body {
   box-shadow: 0 6px 18px rgba(2,6,23,0.6);
 }
 
+.card button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.card a { color: var(--text); text-decoration: none }
+
+.card p { color: var(--muted); margin: 6px 0 }
+
 .card h3 { margin: 0 0 6px 0 }
 
 .page-section { margin-top: 8px }

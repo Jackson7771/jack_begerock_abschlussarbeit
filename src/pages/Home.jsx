@@ -29,6 +29,12 @@ export default function Home() {
             <p className="page-section">Saisons und Rennkalender (historisch).</p>
             <Link to="/gp">Zur GP-Historie →</Link>
           </div>
+
+          <div className="card">
+            <h3>Quiz</h3>
+            <p className="page-section">Kurzes Quiz zur Formel‑1‑Geschichte.</p>
+            <Link to="/quiz">Zum Quiz →</Link>
+          </div>
         </div>
       </div>
     </section>

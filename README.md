@@ -41,19 +41,30 @@ Dies ist ein Abschlussprojekt zur Erstellung einer Formel-1-Archivwebseite. Die 
 - AWS-Anbindung
 
 ## Tag 1
-- Git-Repository initialisiert und zu GitHub gepusht (`https://github.com/Jackson7771/jack_begerock_abschlussarbeit`)
-- `README.md` strukturiert und aktualisiert
-- Routing mit `react-router-dom` eingerichtet (`src/App.jsx`, `src/main.jsx`)
-- Ergast API Client hinzugefügt: `src/api/ergast.js`
-- Seiten erstellt:
-	- `src/pages/Home.jsx` (Startseite)
-	- `src/pages/Drivers.jsx` (Fahrer-Übersicht)
-	- `src/pages/Teams.jsx` (Teams-Übersicht)
-	- `src/pages/Team.jsx` (Team-Detail: Fahrer eines Teams)
-	- `src/pages/GP.jsx` (Grand Prix / Saisons Übersicht)
+## Tag 1 — Zusammenfassung der ersten Schritte
+
+- Repository initialisiert und auf GitHub gepusht: https://github.com/Jackson7771/jack_begerock_abschlussarbeit
+- `README.md` strukturiert, Inhaltsverzeichnis und Installationshinweise ergänzt
+- Client-seitiges Routing mit `react-router-dom` eingerichtet (`src/App.jsx`, `src/main.jsx`)
+- Ergast API Client implementiert: `src/api/ergast.js` (Treiber, Konstrukteure, Rennen)
+- Seiten und Komponenten hinzugefügt:
+	- `src/pages/Home.jsx` — Startseite / Prototyp-Karten
+	- `src/pages/Drivers.jsx` — Fahrer-Übersicht (aktuelles Feld)
+	- `src/pages/Teams.jsx` — Teams / Konstrukteure
+	- `src/pages/Team.jsx` — Team-Detail (Fahrer eines Teams)
+	- `src/pages/GP.jsx` — Grand-Prix / Saisons Übersicht
+	- `src/pages/Quiz.jsx` — einfacher Quiz-Prototyp
+- Basis-Styling für Layout und Karten in `src/App.css`
+- Prototyp lokal getestet; Dev-Server läuft typischerweise unter `http://localhost:5174/` (Port kann variieren)
 - Alle Änderungen committet und auf `origin/main` gepusht
 
-Weiteres: In den nächsten Schritten werden Styling, Quiz-Funktion und Datenbank/Docker-Integration ergänzt.
+Nächste Schritte
+
+- Styling weiter verfeinern (responsive Design)
+- Quiz-Logik erweitern (Fragenbank, Punkte)
+- Grand-Prix-Detailseiten und Team-Historie implementieren
+- Dockerfile + `docker-compose.yml` für lokale Produktion und DB-Integration
+
 
 ## Installation
 Voraussetzung: `node` und `npm` installiert.

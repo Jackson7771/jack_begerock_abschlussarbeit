@@ -185,17 +185,19 @@
 
 /* App-wide simple layout for prototype */
 :root {
-  --bg: #0f1722;
-  --card: #0b1220;
-  --text: #e6eef8;
-  --muted: #9fb0c8;
-  --accent: #ff6b3d;
+  --bg: #fff;
+  --card: #fff;
+  --text: #1a0203;
+  --muted: #6b0a0f;
+  --accent: #c8102e;
+  --accent-bg: rgba(200, 16, 46, 0.12);
+  --accent-border: rgba(200, 16, 46, 0.35);
 }
 
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background: linear-gradient(180deg, #071026 0%, #081726 100%);
+  background: #fff;
   color: var(--text);
 }
 
@@ -203,33 +205,49 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
+  background: var(--bg);
+  border: 3px solid var(--accent);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(200, 16, 46, 0.12);
 }
 
 .app-header {
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
+  padding: 18px 24px;
+  background: var(--accent);
+  border-radius: 20px;
+  color: #fff;
 }
 
 .app-header nav a {
-  color: var(--text);
+  color: #fff;
   text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
 }
 
 .app-header nav a:hover {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 #home {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 20px;
-  align-items: center;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  align-items: start;
   margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+  #home {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cards {
@@ -240,24 +258,42 @@ body {
 
 .card {
   background: var(--card);
-  padding: 14px;
-  border-radius: 8px;
+  padding: 22px;
+  border-radius: 18px;
   min-width: 180px;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  border: 1px solid rgba(200, 16, 46, 0.18);
+  box-shadow: 0 18px 45px rgba(200, 16, 46, 0.14);
+}
+
+.card button,
+.card a {
+  display: inline-flex;
+  align-items: center;
 }
 
 .card button {
   background: var(--accent);
-  color: white;
+  color: #fff;
   border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.card a { color: var(--text); text-decoration: none }
+.card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
 
-.card p { color: var(--muted); margin: 6px 0 }
+.card a:hover {
+  text-decoration: underline;
+}
+
+.card p {
+  color: var(--muted);
+  margin: 6px 0;
+}
 
 .card h3 { margin: 0 0 6px 0 }
 

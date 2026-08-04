@@ -2,9 +2,11 @@ import './App.css'
 import { Link, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Drivers from './pages/Drivers'
+import Driver from './pages/Driver'
 import Teams from './pages/Teams'
 import Team from './pages/Team'
 import GP from './pages/GP'
+import GPRace from './pages/GPRace'
 import Quiz from './pages/Quiz'
 
 function App() {
@@ -29,9 +31,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/drivers" element={<Drivers />} />
+          <Route path="/drivers/:id" element={<Driver />} />
           <Route path="/teams" element={<Teams />} />
           <Route path="/teams/:id" element={<Team />} />
           <Route path="/gp" element={<GP />} />
+          <Route path="/gp/:season/:round" element={<GPRace />} />
           <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </main>

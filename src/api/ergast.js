@@ -1,4 +1,8 @@
-const BASE = 'https://api.jolpi.ca/ergast'
+const BASE = 'https://api.jolpi.ca/ergast/f1'
+
+function normalizeSeason(season) {
+  return season === 'current' ? '2026' : season
+}
 
 async function safeFetch(url) {
   const res = await fetch(url)
@@ -7,7 +11,7 @@ async function safeFetch(url) {
 }
 
 export async function fetchDrivers(season = 'current') {
-  const url = `${BASE}/${season}/drivers.json`
+  const url = `${BASE}/${normalizeSeason(season)}/drivers.json`
   const data = await safeFetch(url)
   return data?.MRData?.DriverTable?.Drivers ?? []
 }
@@ -19,15 +23,26 @@ export async function fetchSeasons(limit = 5) {
 }
 
 export async function fetchConstructors(season = 'current') {
-  const url = `${BASE}/${season}/constructors.json`
+  const url = `${BASE}/${normalizeSeason(season)}/constructors.json`
   const data = await safeFetch(url)
   return data?.MRData?.ConstructorTable?.Constructors ?? []
 }
 
 export async function fetchConstructorDrivers(constructorId) {
-  const url = `${BASE}/constructors/${constructorId}/drivers.json`
+  const url = `${BASE}/2026/constructors/${constructorId}/drivers.json`
   const data = await safeFetch(url)
   return data?.MRData?.DriverTable?.Drivers ?? []
+}
+
+export async function fetchDriverById(driverId, season = 'current') {
+  const drivers = await fetchDrivers(season)
+  return drivers.find((driver) => driver.driverId === driverId)
+}
+
+export async function fetchDriverResults(driverId, season = 'current') {
+  const url = `${BASE}/${normalizeSeason(season)}/drivers/${driverId}/results.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.RaceTable?.Races ?? []
 }
 
 export async function fetchConstructorById(constructorId, season = 'current') {
@@ -36,9 +51,21 @@ export async function fetchConstructorById(constructorId, season = 'current') {
 }
 
 export async function fetchRaces(season = 'current') {
-  const url = `${BASE}/${season}/races.json?limit=1000`
+  const url = `${BASE}/${normalizeSeason(season)}/races.json?limit=1000`
   const data = await safeFetch(url)
   return data?.MRData?.RaceTable?.Races ?? []
 }
 
-export default { fetchDrivers, fetchSeasons, fetchConstructors, fetchConstructorDrivers, fetchConstructorById, fetchRaces }
+export async function fetchRaceResults(season = 'current', round = '1') {
+  const url = `${BASE}/${normalizeSeason(season)}/${round}/results.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.RaceTable?.Races?.[0] ?? null
+}
+
+export async function fetchConstructorResults(constructorId, season = 'current') {
+  const url = `${BASE}/${season}/constructors/${constructorId}/results.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.RaceTable?.Races ?? []
+}
+
+export default { fetchDrivers, fetchSeasons, fetchConstructors, fetchConstructorDrivers, fetchConstructorById, fetchRaces, fetchConstructorResults }

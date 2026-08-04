@@ -9,6 +9,7 @@ Dies ist ein Abschlussprojekt zur Erstellung einer Formel-1-Archivwebseite. Die 
 - [Benötigte Technologien](#benötigte-technologien)
 - [Grundidee](#grundidee)
 - [Tag 1](#tag-1)
+- [Tag 2](#tag-2)
 - [Installation](#installation)
 - [Lokal starten](#lokal-starten)
 - [Docker](#docker)
@@ -58,13 +59,29 @@ Dies ist ein Abschlussprojekt zur Erstellung einer Formel-1-Archivwebseite. Die 
 - Prototyp lokal getestet; Dev-Server läuft typischerweise unter `http://localhost:5174/` (Port kann variieren)
 - Alle Änderungen committet und auf `origin/main` gepusht
 
+Aktueller Stand
+
+- API-getriebene Fahrer-Übersicht und Team-Übersicht
+- Team-Detailseite mit aktueller Fahrer- und Ergebnisliste
+- Fahrerprofilseite mit Rennergebnissen
+- GP-Seite mit Saisonwahl und Rennkalender
+- Quiz-Prototyp wird auf Punkte und mehrere Fragen erweitert
+
 Nächste Schritte
 
 - Styling weiter verfeinern (responsive Design)
-- Quiz-Logik erweitern (Fragenbank, Punkte)
-- Grand-Prix-Detailseiten und Team-Historie implementieren
+- Quiz-Logik fertigstellen und erweitern
+- Grand-Prix-Detailseiten und zusätzliche Historie-Sichten implementieren
 - Dockerfile + `docker-compose.yml` für lokale Produktion und DB-Integration
 
+## Tag 2
+- API-Basis auf den richtigen Ergast-Pfad `https://api.jolpi.ca/ergast/f1` umgestellt
+- Fahrer-Seite so gefiltert, dass nur die 22 Stammfahrer mit permanenter Startnummer angezeigt werden
+- Fahrer-Detailseite mit Rennergebnissen hinzugefügt
+- Grand Prix Historienseite mit Saison-Auswahl und Rennkalender implementiert
+- Renn-Detailseite für einzelne GP-Runden eingebaut
+- Quizseite erweitert: mehrere Fragen, Punktebewertung und Feedback
+- README-Port-Hinweis ergänzt (`5173`, automatische Ausweichports `5174`/`5175`)
 
 ## Installation
 Voraussetzung: `node` und `npm` installiert.
@@ -90,6 +107,7 @@ npm run dev
 ```
 
 Die App ist dann standardmäßig unter `http://localhost:5173` erreichbar.
+Wenn dieser Port belegt ist, verwendet Vite automatisch den nächsten verfügbaren Port (z. B. `5174` oder `5175`).
 
 ## Docker
 Eine einfache Docker-Integration ist geplant. Kurzbeschreibung:

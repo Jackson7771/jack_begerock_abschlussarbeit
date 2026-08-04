@@ -30,10 +30,15 @@ export async function fetchConstructorDrivers(constructorId) {
   return data?.MRData?.DriverTable?.Drivers ?? []
 }
 
+export async function fetchConstructorById(constructorId, season = 'current') {
+  const constructors = await fetchConstructors(season)
+  return constructors.find((c) => c.constructorId === constructorId)
+}
+
 export async function fetchRaces(season = 'current') {
   const url = `${BASE}/${season}/races.json?limit=1000`
   const data = await safeFetch(url)
   return data?.MRData?.RaceTable?.Races ?? []
 }
 
-export default { fetchDrivers, fetchSeasons, fetchConstructors, fetchConstructorDrivers, fetchRaces }
+export default { fetchDrivers, fetchSeasons, fetchConstructors, fetchConstructorDrivers, fetchConstructorById, fetchRaces }

@@ -24,14 +24,23 @@ export default function Drivers() {
 
   return (
     <section>
-      <h2>Drivers</h2>
+      <h2>Aktuelle Formel-1-Fahrer</h2>
+      <p>Die Liste stammt aus der Ergast-API für die aktuelle Saison.</p>
+
       {loading && <p>Loading drivers...</p>}
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
-        <ul>
+        <ul className="grid-list">
           {drivers.map((d) => (
-            <li key={d.driverId}>
-              {d.givenName} {d.familyName} — {d.nationality}
+            <li key={d.driverId} className="card">
+              <h3>{d.givenName} {d.familyName}</h3>
+              <p>{d.nationality}</p>
+              <p>Geboren: {d.dateOfBirth}</p>
+              {d.permanentNumber && <p>Nummer: {d.permanentNumber}</p>}
+              {d.code && <p>Code: {d.code}</p>}
+              {d.url && (
+                <a href={d.url} target="_blank" rel="noreferrer">Mehr Info</a>
+              )}
             </li>
           ))}
         </ul>

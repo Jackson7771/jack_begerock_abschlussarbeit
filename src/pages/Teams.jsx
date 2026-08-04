@@ -18,14 +18,19 @@ export default function Teams() {
 
   return (
     <section>
-      <h2>Current Teams</h2>
+      <h2>Aktuelle Teams</h2>
+      <p>Die Ergast-API liefert aktuelle Konstrukteursdaten der Saison.</p>
+
       {loading && <p>Loading teams...</p>}
       {error && <p>Error: {error}</p>}
       {!loading && !error && (
-        <ul>
+        <ul className="grid-list">
           {teams.map((c) => (
-            <li key={c.constructorId}>
-              <Link to={`/teams/${c.constructorId}`}>{c.name || c.constructorId}</Link>
+            <li key={c.constructorId} className="card">
+              <h3>{c.name || c.constructorId}</h3>
+              <p>Nationale: {c.nationality}</p>
+              <p>ID: {c.constructorId}</p>
+              <Link to={`/teams/${c.constructorId}`}>Team-Detail</Link>
             </li>
           ))}
         </ul>

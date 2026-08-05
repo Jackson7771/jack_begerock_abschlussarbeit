@@ -83,6 +83,13 @@ Nächste Schritte
 - Quizseite erweitert: mehrere Fragen, Punktebewertung und Feedback
 - README-Port-Hinweis ergänzt (`5173`, automatische Ausweichports `5174`/`5175`)
 
+## Tag 3
+- Problemen mit der Bildanzeige auf den Fahrer- und Teamseiten nachgegangen
+- Bild-Utility mit Platzhaltern und Fallbacks ergänzt (`src/utils/imageMaps.js`)
+- Team- und Fahrer-Karten mit Bildkomponenten ausgestattet
+- Team-Detailseite um Logo und Fahrerbilder erweitert
+- README aktualisiert und Projektstatus dokumentiert
+
 ## Installation
 Voraussetzung: `node` und `npm` installiert.
 

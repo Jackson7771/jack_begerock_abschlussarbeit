@@ -90,6 +90,14 @@ Nächste Schritte
 - Team-Detailseite um Logo und Fahrerbilder erweitert
 - README aktualisiert und Projektstatus dokumentiert
 
+## Tag 4
+
+- **Podiumskomponente:** Neue wiederverwendbare Podium-Komponente (`src/components/Podium.jsx`) hinzugefügt und in der GP-Übersicht sowie in der Renn-Detailseite integriert.
+- **Responsive Fixes:** Podium-Layout und zugehörige CSS-Regeln (`src/App.css`) responsive gemacht, damit die Darstellung auf schmalen Bildschirmen nicht verrutscht.
+- **Robustheit:** Podium-Komponente gegen fehlende oder unvollständige Top-3-Daten abgesichert (zeigt Fallbacks statt Fehler).
+- **Root-CSS:** `src/index.css` angepasst (`100svh` → `100vh`) und `html, body { height: 100% }` gesetzt, um Layout-Verschiebungen beim Verlassen der Vollbildansicht zu verhindern.
+- **Allgemeine Styling-Updates:** Kleinere CSS-Verbesserungen und Layout-Feinheiten in `src/App.css` zur besseren Konsistenz.
+
 ## Installation
 Voraussetzung: `node` und `npm` installiert.
 

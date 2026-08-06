@@ -10,7 +10,7 @@ const quizPools = {
     {
       question: 'Welches Team gewann die Konstrukteurs-Weltmeisterschaft 2021?',
       options: ['Ferrari', 'Red Bull', 'Mercedes', 'McLaren'],
-      answer: 1,
+      answer: 2,
     },
     {
       question: 'Wer war der erste Fahrer, der sieben Formel-1-Weltmeistertitel gewann?',
@@ -33,7 +33,7 @@ const quizPools = {
       answer: 1,
     },
     {
-      question: 'Welcher deutsche Fahrer gewann drei Weltmeistertitel hintereinander von 2010 bis 2012?',
+      question: 'Welcher deutsche Fahrer gewann vier Weltmeistertitel in Folge von 2010 bis 2013?',
       options: ['Nico Rosberg', 'Sebastian Vettel', 'Michael Schumacher', 'Mick Schumacher'],
       answer: 1,
     },

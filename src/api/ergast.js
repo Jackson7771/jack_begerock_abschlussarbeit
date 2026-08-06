@@ -16,7 +16,7 @@ export async function fetchDrivers(season = 'current') {
   return data?.MRData?.DriverTable?.Drivers ?? []
 }
 
-export async function fetchSeasons(limit = 5) {
+export async function fetchSeasons(limit = 100) {
   const url = `${BASE}/seasons.json?limit=${limit}`
   const data = await safeFetch(url)
   return data?.MRData?.SeasonTable?.Seasons ?? []
@@ -28,8 +28,8 @@ export async function fetchConstructors(season = 'current') {
   return data?.MRData?.ConstructorTable?.Constructors ?? []
 }
 
-export async function fetchConstructorDrivers(constructorId) {
-  const url = `${BASE}/2026/constructors/${constructorId}/drivers.json`
+export async function fetchConstructorDrivers(constructorId, season = 'current') {
+  const url = `${BASE}/${normalizeSeason(season)}/constructors/${constructorId}/drivers.json`
   const data = await safeFetch(url)
   return data?.MRData?.DriverTable?.Drivers ?? []
 }
@@ -45,13 +45,34 @@ export async function fetchDriverResults(driverId, season = 'current') {
   return data?.MRData?.RaceTable?.Races ?? []
 }
 
+export async function fetchDriverCareerResults(driverId) {
+  const url = `${BASE}/drivers/${driverId}/results.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.RaceTable?.Races ?? []
+}
+
+export async function fetchDriverStandings(season = 'current') {
+  const url = `${BASE}/${normalizeSeason(season)}/driverStandings.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.StandingsTable?.StandingsLists?.[0]?.DriverStandings ?? []
+}
+
+export async function fetchConstructorStandings(season = 'current') {
+  const url = `${BASE}/${normalizeSeason(season)}/constructorStandings.json?limit=1000`
+  const data = await safeFetch(url)
+  return data?.MRData?.StandingsTable?.StandingsLists?.[0]?.ConstructorStandings ?? []
+}
+
 export async function fetchConstructorById(constructorId, season = 'current') {
   const constructors = await fetchConstructors(season)
   return constructors.find((c) => c.constructorId === constructorId)
 }
 
 export async function fetchRaces(season = 'current') {
-  const url = `${BASE}/${normalizeSeason(season)}/races.json?limit=1000`
+  const url =
+    season === 'all'
+      ? `${BASE}/races.json?limit=2000`
+      : `${BASE}/${normalizeSeason(season)}/races.json?limit=1000`
   const data = await safeFetch(url)
   return data?.MRData?.RaceTable?.Races ?? []
 }
@@ -63,7 +84,7 @@ export async function fetchRaceResults(season = 'current', round = '1') {
 }
 
 export async function fetchConstructorResults(constructorId, season = 'current') {
-  const url = `${BASE}/${season}/constructors/${constructorId}/results.json?limit=1000`
+  const url = `${BASE}/${normalizeSeason(season)}/constructors/${constructorId}/results.json?limit=1000`
   const data = await safeFetch(url)
   return data?.MRData?.RaceTable?.Races ?? []
 }

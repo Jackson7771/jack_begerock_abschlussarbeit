@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { fetchRaceResults } from '../api/ergast'
+import { formatDateDDMMYYYY } from '../utils/dateUtils'
+import Podium from '../components/Podium'
 
 export default function GPRace() {
   const { season, round } = useParams()
@@ -37,19 +39,11 @@ export default function GPRace() {
         <div className="card">
           <h3>{race.raceName}</h3>
           <p>Saison {race.season}, Runde {race.round}</p>
-          <p>{race.date}</p>
-          <p>{race.Circuit.circuitName}</p>
-          <p>
-            {race.Circuit.Location.locality}, {race.Circuit.Location.country}
-          </p>
+          <p>Datum: {formatDateDDMMYYYY(race.date)}</p>
+          <p>Streckenname: {race.Circuit.circuitName}</p>
+          <p>Ort: {race.Circuit.Location.locality}, {race.Circuit.Location.country}</p>
           <h4>Top 3 Ergebnisse</h4>
-          <ul>
-            {race.Results?.slice(0, 3).map((result) => (
-              <li key={result.position}>
-                {result.position}. {result.Driver.givenName} {result.Driver.familyName} — {result.Constructor.name} ({result.positionText})
-              </li>
-            ))}
-          </ul>
+          <Podium results={race.Results?.slice(0, 3) || []} />
           <p>
             <Link to="/gp">← Zurück zur Saisonübersicht</Link>
           </p>

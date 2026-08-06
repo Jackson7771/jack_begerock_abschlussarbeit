@@ -1,10 +1,24 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { fetchDriverById, fetchDriverResults } from '../api/ergast'
+import { fetchDriverById, fetchDriverCareerResults, fetchDriverResults } from '../api/ergast'
+import { translateNationality } from '../utils/nationalityMaps'
+import { getDriverImage } from '../utils/imageMaps'
+
+function calculateAge(dateOfBirth) {
+  const birth = new Date(dateOfBirth)
+  const now = new Date()
+  let age = now.getFullYear() - birth.getFullYear()
+  const monthDiff = now.getMonth() - birth.getMonth()
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
+    age -= 1
+  }
+  return age
+}
 
 export default function Driver() {
   const { id } = useParams()
   const [driver, setDriver] = useState(null)
+  const [careerStats, setCareerStats] = useState({ races: 0, wins: 0 })
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -12,10 +26,14 @@ export default function Driver() {
   useEffect(() => {
     let mounted = true
 
-    Promise.all([fetchDriverById(id), fetchDriverResults(id)])
-      .then(([driverData, driverResults]) => {
+    Promise.all([fetchDriverById(id), fetchDriverCareerResults(id), fetchDriverResults(id)])
+      .then(([driverData, careerResults, driverResults]) => {
         if (!mounted) return
         setDriver(driverData)
+        setCareerStats({
+          races: careerResults.length,
+          wins: careerResults.filter((race) => race.Results?.[0]?.position === '1').length,
+        })
         setResults(driverResults)
       })
       .catch((e) => {
@@ -35,14 +53,21 @@ export default function Driver() {
       <h2>Fahrerprofil</h2>
       {loading && <p>Loading driver details...</p>}
       {error && <p>Error: {error}</p>}
-
       {!loading && !error && driver && (
         <div className="card">
+          <img
+            className="profile-image"
+            src={getDriverImage(driver)}
+            alt={`${driver.givenName} ${driver.familyName}`}
+          />
           <h3>{driver.givenName} {driver.familyName}</h3>
-          <p>{driver.nationality}</p>
-          <p>Geboren: {driver.dateOfBirth}</p>
-          {driver.permanentNumber && <p>Nummer: {driver.permanentNumber}</p>}
-          {driver.code && <p>Code: {driver.code}</p>}
+          <p className="label-row"><span className="label">Alter:</span> {calculateAge(driver.dateOfBirth)}</p>
+          {driver.permanentNumber && (
+            <p className="label-row"><span className="label">Startnummer:</span> {driver.permanentNumber}</p>
+          )}
+          <p className="label-row"><span className="label">Nationalität:</span> {translateNationality(driver.nationality)}</p>
+          <p className="label-row"><span className="label">Karriere Rennen:</span> {careerStats.races}</p>
+          <p className="label-row"><span className="label">Karriere Siege:</span> {careerStats.wins}</p>
           {driver.url && (
             <p>
               <a href={driver.url} target="_blank" rel="noreferrer">

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchConstructors } from '../api/ergast'
+import { translateNationality } from '../utils/nationalityMaps'
+import { getTeamLocation } from '../utils/teamLocations'
+import { getTeamImage } from '../utils/imageMaps'
 
 export default function Teams() {
   const [teams, setTeams] = useState([])
@@ -27,9 +30,15 @@ export default function Teams() {
         <ul className="grid-list">
           {teams.map((c) => (
             <li key={c.constructorId} className="card">
+              <img
+                className="team-logo"
+                src={getTeamImage(c)}
+                alt={`${c.name || c.constructorId} Logo`}
+                loading="lazy"
+              />
               <h3>{c.name || c.constructorId}</h3>
-              <p>Nationale: {c.nationality}</p>
-              <p>ID: {c.constructorId}</p>
+              <p className="label-row"><span className="label">Nationalität:</span> {translateNationality(c.nationality)}</p>
+              <p className="label-row"><span className="label">Standort:</span> {getTeamLocation(c.constructorId)}</p>
               <Link to={`/teams/${c.constructorId}`}>Team-Detail</Link>
             </li>
           ))}

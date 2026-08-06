@@ -31,19 +31,21 @@
 }
 
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  background: #fff;
+  background: transparent;
   color: var(--text);
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: min(1200px, 100%);
   margin: 0 auto;
-  text-align: center;
-  border: 2px solid var(--accent);
-  min-height: 100svh;
+  padding: 16px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

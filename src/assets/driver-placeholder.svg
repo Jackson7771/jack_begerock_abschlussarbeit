@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280">
+  <rect width="480" height="280" fill="#e5e1dd"/>
+  <circle cx="240" cy="120" r="52" fill="#c8102e" opacity="0.15"/>
+  <path d="M176 220c0-26 36-46 64-46s64 20 64 46" fill="#c8102e" opacity="0.18"/>
+  <text x="240" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" fill="#333">Fahrerbild</text>
+</svg>

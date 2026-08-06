@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title">
+  <title>F1 Logo</title>
+  <rect width="320" height="120" rx="24" fill="#fff" />
+  <path d="M40 32h60l-16 28h30l18-32H100l-16 28H68L40 32Z" fill="#111" />
+  <path d="M198 32h32l-18 28h-14V32Z" fill="#111" />
+  <path d="M230 32h30l-26 48h-20l16-28h-28l26-20Z" fill="#c8102e" />
+</svg>

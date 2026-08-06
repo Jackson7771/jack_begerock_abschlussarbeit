@@ -48,8 +48,8 @@ const quizPools = {
       answer: 1,
     },
     {
-      question: 'Wer gewann die Formel-1-Saison 1988 mit 15 Siegen aus 16 Rennen?',
-      options: ['Team Ferrari', 'Team McLaren', 'Ayrton Senna', 'Nelson Piquet'],
+      question: 'Welches Team gewann 15 von 16 Rennen in der Formel-1-Saison 1988?',
+      options: ['Ferrari', 'McLaren', 'Williams', 'Lotus'],
       answer: 1,
     },
   ],
